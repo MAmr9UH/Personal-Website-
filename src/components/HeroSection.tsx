@@ -1,90 +1,39 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import mountainHero from '@/assets/mountain-hero.jpg';
+import mountainHero from '@/assets/mountain-hero.jpg'; // adjust path if needed
 
 const HeroSection = () => {
   const [offsetY, setOffsetY] = useState(0);
 
   useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setOffsetY(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
+    const handleScroll = () => setOffsetY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* Background Image with Smooth Parallax */}
+      {/* Background Parallax */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform transition-transform duration-75"
         style={{
           backgroundImage: `url(${mountainHero})`,
-          transform: `translate3d(0, ${Math.min(offsetY * 0.4, 60)}px, 0)`
+          transform: `translate3d(0, ${Math.min(offsetY * 0.4, 60)}px, 0)`,
         }}
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-white" />
 
-      {/* Content */}
+      {/* Hero Content */}
       <div className="relative z-10 flex items-center justify-center h-full px-4">
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="mb-6 animate-float">
-            <span className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium text-primary backdrop-blur-sm">
-              Machine Learning Engineer
-            </span>
-          </div>
-
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text leading-tight md:text-7xl text-blue-950">
-            Mohamed Amr
-            <br />
-            <span className="text-zinc-950 font-medium text-5xl text-right">
-              Machine learning
-            </span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Transforming complex data into breakthrough insights through
-            cutting-edge machine learning and AI innovation.
+        <div className="text-center max-w-3xl mx-auto">
+          <h1 className="text-5xl font-bold text-blue-900 mb-2">Mohamed Amr</h1>
+          <h2 className="text-2xl font-semibold text-black mb-4">Machine learning</h2>
+          <p className="text-gray-100 text-md max-w-xl mx-auto mb-6">
+            Transforming complex data into breakthrough insights through cutting-edge machine learning and AI innovation.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="default"
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-premium transition-all duration-300 px-8 py-6 text-lg"
-            >
+            <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-semibold shadow">
               View Portfolio
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary/30 hover:border-primary text-foreground hover:bg-primary/5 backdrop-blur-sm px-8 py-6 text-lg transition-all duration-300"
-            >
-              Download CV
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default HeroSection;
+            </button>
+            <button className="bg-black
