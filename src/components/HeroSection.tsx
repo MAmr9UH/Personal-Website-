@@ -28,12 +28,16 @@ const HeroSection = () => {
       <div className="relative z-10 flex h-full items-center justify-center px-4">
         <div className="mx-auto max-w-4xl text-center">
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <button className="rounded-lg bg-primary px-8 py-3 font-semibold text-primary-foreground hover:bg-primary/90 transition-colors backdrop-blur-sm">
-              View Portfolio
-            </button>
-            <button className="rounded-lg bg-foreground px-8 py-3 font-semibold text-background hover:bg-foreground/90 transition-colors backdrop-blur-sm">
-              Download CV
-            </button>
+            <input 
+              type="text" 
+              placeholder="Enter your name"
+              className="rounded-lg bg-background/80 px-6 py-3 text-foreground placeholder:text-muted-foreground backdrop-blur-sm border border-border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            <input 
+              type="text" 
+              placeholder="Enter other info"
+              className="rounded-lg bg-background/80 px-6 py-3 text-foreground placeholder:text-muted-foreground backdrop-blur-sm border border-border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
           </div>
         </div>
       </div>
