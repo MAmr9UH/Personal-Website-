@@ -46,10 +46,10 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text leading-tight md:text-7xl text-blue-950">
-            Machine learning
+            Mohamed Amr
             <br />
             <span className="text-zinc-950 font-medium text-5xl text-right">
-              Mohamed Amr
+              Machine learning 
             </span>
           </h1>
 
