@@ -1,30 +1,21 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-background/80 backdrop-blur-md border-b border-border/50' 
-        : 'bg-transparent'
-    }`}>
+  return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border/50' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-2xl font-bold">
-            <span className="text-foreground">ML</span>
-            <span className="text-primary">Portfolio</span>
+            <span className="text-slate-300">ML Engineer</span>
+            <span className="text-primary"></span>
           </div>
           
           {/* Navigation Links */}
@@ -44,16 +35,11 @@ const Navigation = () => {
           </div>
           
           {/* CTA Button */}
-          <Button 
-            variant="outline" 
-            className="border-primary/30 hover:border-primary text-foreground hover:bg-primary/5 backdrop-blur-sm"
-          >
+          <Button variant="outline" className="border-primary/30 hover:border-primary backdrop-blur-sm text-slate-950 bg-slate-300 hover:bg-slate-200">
             Get in Touch
           </Button>
         </div>
       </div>
-    </nav>
-  );
+    </nav>;
 };
-
 export default Navigation;
