@@ -29,7 +29,7 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform transition-transform duration-75"
         style={{
           backgroundImage: `url(${mountainHero})`,
-          transform: `translateY(${offsetY * 0.2}px)`
+          transform: `translate3d(0, ${Math.min(offsetY * 0.4, 60)}px, 0)`
         }}
       />
 
@@ -49,7 +49,7 @@ const HeroSection = () => {
             Mohamed Amr
             <br />
             <span className="text-zinc-950 font-medium text-5xl text-right">
-              Machine learning 
+              Machine learning
             </span>
           </h1>
 
