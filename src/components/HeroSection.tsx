@@ -27,17 +27,14 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-4">
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-8 inline-block rounded-full bg-primary/20 px-6 py-2 text-sm font-medium text-primary backdrop-blur-sm border border-primary/30">
-            Machine Learning Engineer
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <button className="rounded-lg bg-primary px-8 py-3 font-semibold text-primary-foreground hover:bg-primary/90 transition-colors backdrop-blur-sm">
+              View Portfolio
+            </button>
+            <button className="rounded-lg bg-foreground px-8 py-3 font-semibold text-background hover:bg-foreground/90 transition-colors backdrop-blur-sm">
+              Download CV
+            </button>
           </div>
-          
-          <h1 className="mb-6 text-5xl font-bold text-foreground md:text-7xl lg:text-8xl">
-            Mohamed Amr
-          </h1>
-          
-          <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Transforming complex data into breakthrough insights through cutting‑edge machine learning and AI innovation.
-          </p>
         </div>
       </div>
       
