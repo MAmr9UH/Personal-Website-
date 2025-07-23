@@ -9,8 +9,8 @@ const App = () => {
   }, []);
   return <div className="relative font-sans">
       {/* ───── NAVBAR ───── */}
-      <nav className="fixed inset-x-0 top-0 z-50 backdrop-blur-md px-6 py-4 text-white shadow-md bg-blue-200">
-        <div className="mx-auto flex max-w-7xl items-center justify-between bg-slate-400">
+      <nav className="fixed inset-x-0 top-0 z-50 backdrop-blur-md px-6 py-4 text-white shadow-md bg-slate-950">
+        <div className="mx-auto flex max-w-7xl items-center justify-between bg-gray-950">
           <span className="text-2xl font-bold tracking-wide text-blue-300">MA</span>
 
           <ul className="hidden items-center gap-6 text-sm font-medium md:flex">
