@@ -24,7 +24,7 @@ function App() {
       {/* Navbar */}
       <nav className="w-full fixed top-0 left-0 z-50 bg-black/90 backdrop-blur-md text-white shadow-md px-6 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="text-2xl font-bold text-purple-300 tracking-wide">Ib.</div>
+          <div className="text-2xl font-bold text-purple-300 tracking-wide">MA</div>
           <ul className="hidden md:flex items-center gap-6 text-sm font-medium">
             <li className="flex items-center gap-2 hover:text-purple-400 cursor-pointer"><Home size={18} /> Home</li>
             <li className="flex items-center gap-2 hover:text-purple-400 cursor-pointer"><User size={18} /> About</li>
