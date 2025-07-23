@@ -36,7 +36,7 @@ function App() {
         backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/2/2c/Monte_bianco.JPG')`,
         transform: `translate3d(0, ${Math.min(offsetY * 0.4, 60)}px, 0)`
       }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-white" />
+        
         <div className="relative z-10 flex items-center justify-center h-full px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-5xl font-bold text-blue-900 mb-2">Mohamed Amr</h1>
