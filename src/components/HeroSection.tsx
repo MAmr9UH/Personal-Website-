@@ -29,7 +29,7 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform transition-transform duration-75"
         style={{
           backgroundImage: `url(${mountainHero})`,
-          transform: `translateY(${offsetY * 0.2}px)`,
+          transform: `translateY(${offsetY * 0.2}px)`
         }}
       />
 
@@ -60,3 +60,31 @@ const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              variant="default"
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-premium transition-all duration-300 px-8 py-6 text-lg"
+            >
+              View Portfolio
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-primary/30 hover:border-primary text-foreground hover:bg-primary/5 backdrop-blur-sm px-8 py-6 text-lg transition-all duration-300"
+            >
+              Download CV
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
