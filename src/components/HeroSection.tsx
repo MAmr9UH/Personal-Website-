@@ -28,7 +28,7 @@ const HeroSection = () => {
           </div>
           
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent leading-tight md:text-7xl">
-            Pioneering the Future
+            Machine learning
             <br />
             <span className="text-zinc-950 font-medium text-5xl">Mohamed Amr</span>
           </h1>
