@@ -3,21 +3,34 @@ import mountainHero from '@/assets/mountain-hero.jpg';
 
 const HeroSection = () => {
   const [offsetY, setOffsetY] = useState(0);
+  const [mouseX, setMouseX] = useState(0);
+  const [mouseY, setMouseY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setOffsetY(window.scrollY);
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      setMouseX((clientX - innerWidth / 2) / innerWidth);
+      setMouseY((clientY - innerHeight / 2) / innerHeight);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   return (
     <section className="relative h-screen overflow-hidden">
       {/* Parallax Background */}
       <div 
-        className="absolute inset-0 bg-cover bg-center will-change-transform transition-transform duration-75"
+        className="absolute inset-0 bg-cover bg-center will-change-transform transition-transform duration-300 ease-out"
         style={{
           backgroundImage: `url(${mountainHero})`,
-          transform: `translate3d(0, ${Math.min(offsetY * 0.4, 60)}px, 0)`
+          transform: `translate3d(${mouseX * 20}px, ${Math.min(offsetY * 0.4, 60) + mouseY * 15}px, 0) scale(1.05)`
         }}
       />
       
