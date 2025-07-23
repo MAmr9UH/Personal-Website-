@@ -27,10 +27,10 @@ const HeroSection = () => {
             </span>
           </div>
           
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent leading-tight md:text-7xl">
+          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text leading-tight md:text-7xl text-blue-950">
             Machine learning
             <br />
-            <span className="text-zinc-950 font-medium text-5xl">Mohamed Amr</span>
+            <span className="text-zinc-950 font-medium text-5xl text-right">Mohamed Amr</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
