@@ -1,64 +1,90 @@
-// src/components/Navbar.tsx
+import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import mountainHero from '@/assets/mountain-hero.jpg';
 
-import {
-  Home,
-  User,
-  FolderOpen,
-  Briefcase,
-  FileText,
-  Rss,
-  Award,
-  Star,
-} from 'lucide-react';
+const HeroSection = () => {
+  const [offsetY, setOffsetY] = useState(0);
 
-const Navbar = () => {
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setOffsetY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-[#0b0c1c]/90 backdrop-blur-md text-white shadow-md px-6 py-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-purple-400 tracking-wide">Ib.</div>
+    <section className="relative h-screen overflow-hidden">
+      {/* Background Image with Smooth Parallax */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform transition-transform duration-75"
+        style={{
+          backgroundImage: `url(${mountainHero})`,
+          transform: `translate3d(0, ${Math.min(offsetY * 0.4, 60)}px, 0)`
+        }}
+      />
 
-        {/* Navigation */}
-        <ul className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <li className="flex items-center gap-2 hover:text-purple-300 cursor-pointer">
-            <Home size={18} />
-            Home
-          </li>
-          <li className="flex items-center gap-2 hover:text-purple-300 cursor-pointer">
-            <User size={18} />
-            About
-          </li>
-          <li className="flex items-center gap-2 hover:text-purple-300 cursor-pointer">
-            <FolderOpen size={18} />
-            Projects
-          </li>
-          <li className="flex items-center gap-2 hover:text-purple-300 cursor-pointer">
-            <Briefcase size={18} />
-            Experiences
-          </li>
-          <li className="flex items-center gap-2 hover:text-purple-300 cursor-pointer">
-            <FileText size={18} />
-            Resume
-          </li>
-          <li className="flex items-center gap-2 hover:text-purple-300 cursor-pointer">
-            <Rss size={18} />
-            Blogs
-          </li>
-          <li className="flex items-center gap-2 hover:text-purple-300 cursor-pointer">
-            <Award size={18} />
-            Certificates
-          </li>
-        </ul>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
 
-        {/* Right button */}
-        <div className="ml-4">
-          <button className="flex items-center gap-2 bg-purple-700 hover:bg-purple-600 transition px-3 py-2 rounded-md text-sm font-semibold shadow">
-            <Star size={16} />
-          </button>
+      {/* Content */}
+      <div className="relative z-10 flex items-center justify-center h-full px-4">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="mb-6 animate-float">
+            <span className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium text-primary backdrop-blur-sm">
+              Machine Learning Engineer
+            </span>
+          </div>
+
+          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text leading-tight md:text-7xl text-blue-950">
+            Mohamed Amr
+            <br />
+            <span className="text-zinc-950 font-medium text-5xl text-right">
+              Machine learning
+            </span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+            Transforming complex data into breakthrough insights through
+            cutting-edge machine learning and AI innovation.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              variant="default"
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-premium transition-all duration-300 px-8 py-6 text-lg"
+            >
+              View Portfolio
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-primary/30 hover:border-primary text-foreground hover:bg-primary/5 backdrop-blur-sm px-8 py-6 text-lg transition-all duration-300"
+            >
+              Download CV
+            </Button>
+          </div>
         </div>
       </div>
-    </nav>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default Navbar;
+export default HeroSection;
