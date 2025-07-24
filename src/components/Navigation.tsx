@@ -23,11 +23,17 @@ const Navigation = () => {
             <a href="#about" className="text-lg text-muted-foreground hover:text-primary transition-colors">
               About
             </a>
+            <a href="#experience" className="text-lg text-muted-foreground hover:text-primary transition-colors">
+              Experience
+            </a>
             <a href="#projects" className="text-lg text-muted-foreground hover:text-primary transition-colors">
               Projects
             </a>
             <a href="#research" className="text-lg text-muted-foreground hover:text-primary transition-colors">
               Research
+            </a>
+            <a href="#certificates" className="text-lg text-muted-foreground hover:text-primary transition-colors">
+              Certificates
             </a>
             <a href="#contact" className="text-lg text-muted-foreground hover:text-primary transition-colors">
               Contact
