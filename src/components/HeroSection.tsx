@@ -81,7 +81,7 @@ const HeroSection = () => {
             
             {/* Main Name Text */}
             <div className="relative z-10">
-              <div className="text-6xl md:text-8xl font-bold text-foreground mb-2 leading-none">
+              <div className="text-4xl md:text-5xl font-bold text-foreground mb-1 leading-none">
                 <span 
                   className="inline-block animate-fade-in"
                   style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
@@ -89,7 +89,7 @@ const HeroSection = () => {
                   Mohamed
                 </span>
               </div>
-              <div className="text-6xl md:text-8xl font-bold text-foreground leading-none">
+              <div className="text-4xl md:text-5xl font-bold text-foreground leading-none mb-6">
                 <span 
                   className="inline-block animate-fade-in"
                   style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
@@ -106,7 +106,7 @@ const HeroSection = () => {
               className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in"
               style={{ animationDelay: '0.8s', animationFillMode: 'both' }}
             >
-              I design, tinker, & teach intelligent systems that solve problems, adapt over time, and drive decisions.
+              I build intelligent systems that solve problems, adapt over time, and drive decisions.
             </p>
           </div>
           
