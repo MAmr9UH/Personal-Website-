@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import OceanSection from '@/components/OceanSection';
+import ChatBox from '@/components/ChatBox';
 
 const Index = () => {
   return (
@@ -8,6 +9,7 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <OceanSection />
+      <ChatBox />
     </div>
   );
 };
