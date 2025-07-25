@@ -1,56 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
-import { Send, MessageCircle, X } from 'lucide-react';
-
-interface Message {
-  id: number;
-  text: string;
-  sender: 'user' | 'bot';
-  timestamp: Date;
-}
+import { useState } from 'react';
+import { Plus, Mic, Send } from 'lucide-react';
 
 const ChatBox = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: "Hi there! I'm Mohamed's AI assistant. Feel free to ask me anything about his work, projects, or experience!",
-      sender: 'bot',
-      timestamp: new Date()
-    }
-  ]);
   const [inputValue, setInputValue] = useState('');
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleSendMessage = () => {
     if (inputValue.trim()) {
-      const newMessage: Message = {
-        id: messages.length + 1,
-        text: inputValue,
-        sender: 'user',
-        timestamp: new Date()
-      };
-      
-      setMessages(prev => [...prev, newMessage]);
+      // Handle message sending logic here
+      console.log('Message sent:', inputValue);
       setInputValue('');
-      
-      // Simulate bot response
-      setTimeout(() => {
-        const botResponse: Message = {
-          id: messages.length + 2,
-          text: "Thanks for your message! This is a demo chatbox. Mohamed will get back to you soon!",
-          sender: 'bot',
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, botResponse]);
-      }, 1000);
+      setIsExpanded(false);
     }
   };
 
@@ -62,83 +22,77 @@ const ChatBox = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
-      {/* Chat Toggle Button */}
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="bg-primary text-primary-foreground p-4 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:scale-110 animate-pulse"
+    <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-2xl px-4">
+      <div className="relative">
+        {/* Main Search Box */}
+        <div 
+          className={`bg-background/80 backdrop-blur-md border border-border rounded-full shadow-lg transition-all duration-300 ${
+            isExpanded ? 'shadow-xl' : 'hover:shadow-xl'
+          }`}
         >
-          <MessageCircle size={24} />
-        </button>
-      )}
-
-      {/* Chat Window */}
-      {isOpen && (
-        <div className="bg-card border border-border rounded-lg shadow-xl w-80 h-96 flex flex-col animate-fade-in">
-          {/* Header */}
-          <div className="bg-primary text-primary-foreground p-4 rounded-t-lg flex justify-between items-center">
-            <div>
-              <h3 className="font-semibold">Chat with Mohamed</h3>
-              <p className="text-xs opacity-90">Usually responds instantly</p>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="hover:bg-primary/80 p-1 rounded"
-            >
-              <X size={18} />
+          <div className="flex items-center px-6 py-4 gap-4">
+            {/* Plus Icon */}
+            <button className="text-muted-foreground hover:text-foreground transition-colors">
+              <Plus size={20} />
             </button>
-          </div>
 
-          {/* Messages */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-4">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div
-                  className={`max-w-xs p-3 rounded-lg ${
-                    message.sender === 'user'
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted text-muted-foreground'
-                  }`}
-                >
-                  <p className="text-sm">{message.text}</p>
-                  <p className="text-xs opacity-70 mt-1">
-                    {message.timestamp.toLocaleTimeString([], { 
-                      hour: '2-digit', 
-                      minute: '2-digit' 
-                    })}
-                  </p>
-                </div>
-              </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
+            {/* Input Field */}
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={handleKeyPress}
+              onFocus={() => setIsExpanded(true)}
+              onBlur={() => !inputValue && setIsExpanded(false)}
+              placeholder="Ask anything..."
+              className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-lg"
+            />
 
-          {/* Input */}
-          <div className="border-t border-border p-4">
-            <div className="flex space-x-2">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
-                className="flex-1 px-3 py-2 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-              />
-              <button
-                onClick={handleSendMessage}
-                disabled={!inputValue.trim()}
-                className="bg-primary text-primary-foreground p-2 rounded-md hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                <Send size={18} />
+            {/* Tools Label */}
+            <span className="text-muted-foreground text-sm font-medium">Tools</span>
+
+            {/* Right Icons */}
+            <div className="flex items-center gap-2">
+              <button className="text-muted-foreground hover:text-foreground transition-colors">
+                <Mic size={20} />
               </button>
+              
+              {inputValue && (
+                <button
+                  onClick={handleSendMessage}
+                  className="bg-primary text-primary-foreground p-2 rounded-full hover:bg-primary/90 transition-all duration-300 animate-fade-in"
+                >
+                  <Send size={16} />
+                </button>
+              )}
             </div>
           </div>
         </div>
-      )}
+
+        {/* Expanded Options */}
+        {isExpanded && (
+          <div className="absolute top-full mt-2 w-full bg-card/95 backdrop-blur-md border border-border rounded-2xl shadow-xl p-4 animate-fade-in">
+            <div className="grid grid-cols-2 gap-3 text-sm">
+              <button className="p-3 text-left rounded-lg hover:bg-accent transition-colors">
+                <div className="font-medium">Portfolio Projects</div>
+                <div className="text-muted-foreground text-xs">View my latest work</div>
+              </button>
+              <button className="p-3 text-left rounded-lg hover:bg-accent transition-colors">
+                <div className="font-medium">Technical Skills</div>
+                <div className="text-muted-foreground text-xs">Explore my expertise</div>
+              </button>
+              <button className="p-3 text-left rounded-lg hover:bg-accent transition-colors">
+                <div className="font-medium">Experience</div>
+                <div className="text-muted-foreground text-xs">Professional background</div>
+              </button>
+              <button className="p-3 text-left rounded-lg hover:bg-accent transition-colors">
+                <div className="font-medium">Contact Info</div>
+                <div className="text-muted-foreground text-xs">Get in touch</div>
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
