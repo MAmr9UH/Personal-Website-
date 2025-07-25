@@ -40,7 +40,10 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-4">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="text-4xl md:text-6xl font-bold text-foreground mb-8 block">Mohamed Amr</span>
+          <span className="text-4xl md:text-6xl font-bold text-foreground mb-4 block">Mohamed Amr</span>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
+            I build intelligent systems that solve problems, adapt over time, and drive decisions.
+          </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <button className="rounded-lg bg-primary px-8 py-3 font-semibold text-primary-foreground hover:bg-primary/90 transition-colors backdrop-blur-sm">
               View Portfolio
