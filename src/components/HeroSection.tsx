@@ -39,16 +39,86 @@ const HeroSection = () => {
       
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-4">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="text-4xl md:text-6xl font-bold text-foreground mb-4 block">Mohamed Amr</span>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
-            I build intelligent systems that solve problems, adapt over time, and drive decisions.
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <button className="rounded-lg bg-primary px-8 py-3 font-semibold text-primary-foreground hover:bg-primary/90 transition-colors backdrop-blur-sm">
+        <div className="mx-auto max-w-6xl text-center relative">
+          {/* Animated Name with Stylized SVG */}
+          <div className="relative mb-8">
+            {/* Background SVG Pattern */}
+            <svg 
+              className="absolute inset-0 w-full h-full animate-fade-in opacity-20" 
+              viewBox="0 0 800 400" 
+              fill="none"
+              style={{ animationDelay: '0.5s' }}
+            >
+              {/* Geometric M */}
+              <path 
+                d="M100 50 L100 350 L150 150 L200 350 L250 50" 
+                stroke="hsl(var(--primary))" 
+                strokeWidth="3" 
+                fill="none"
+                className="animate-pulse"
+                style={{ animationDelay: '1s' }}
+              />
+              {/* Geometric A */}
+              <path 
+                d="M400 350 L450 50 L500 350 M420 200 L480 200" 
+                stroke="hsl(var(--primary))" 
+                strokeWidth="3" 
+                fill="none"
+                className="animate-pulse"
+                style={{ animationDelay: '1.2s' }}
+              />
+              {/* Decorative lines */}
+              <path 
+                d="M300 100 Q400 50 500 100" 
+                stroke="hsl(var(--primary))" 
+                strokeWidth="2" 
+                fill="none" 
+                opacity="0.6"
+                className="animate-pulse"
+                style={{ animationDelay: '1.4s' }}
+              />
+            </svg>
+            
+            {/* Main Name Text */}
+            <div className="relative z-10">
+              <div className="text-6xl md:text-8xl font-bold text-foreground mb-2 leading-none">
+                <span 
+                  className="inline-block animate-fade-in"
+                  style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
+                >
+                  Mohamed
+                </span>
+              </div>
+              <div className="text-6xl md:text-8xl font-bold text-foreground leading-none">
+                <span 
+                  className="inline-block animate-fade-in"
+                  style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
+                >
+                  Amr
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Animated Tagline */}
+          <div className="relative">
+            <p 
+              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in"
+              style={{ animationDelay: '0.8s', animationFillMode: 'both' }}
+            >
+              I design, tinker, & teach intelligent systems that solve problems, adapt over time, and drive decisions.
+            </p>
+          </div>
+          
+          {/* Animated Buttons */}
+          <div 
+            className="flex flex-col justify-center gap-4 sm:flex-row animate-fade-in"
+            style={{ animationDelay: '1s', animationFillMode: 'both' }}
+          >
+            <button className="rounded-lg bg-primary px-8 py-3 font-semibold text-primary-foreground hover:bg-primary/90 transition-all duration-300 backdrop-blur-sm hover:scale-105">
               View Portfolio
             </button>
-            <button className="rounded-lg bg-foreground px-8 py-3 font-semibold text-background hover:bg-foreground/90 transition-colors backdrop-blur-sm">
+            <button className="rounded-lg bg-foreground px-8 py-3 font-semibold text-background hover:bg-foreground/90 transition-all duration-300 backdrop-blur-sm hover:scale-105">
               Download CV
             </button>
           </div>
