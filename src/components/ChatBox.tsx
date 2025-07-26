@@ -48,8 +48,12 @@ const ChatBox = () => {
               className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-lg"
             />
 
-            {/* Tools Label */}
-            <span className="text-muted-foreground text-sm font-medium">Tools</span>
+            {/* Character Icon */}
+            <img 
+              src="/lovable-uploads/386b4f5a-c83f-4d0f-bc82-3d13a2dd7830.png" 
+              alt="Character" 
+              className="w-8 h-8 rounded-full object-cover"
+            />
 
             {/* Right Icons */}
             <div className="flex items-center gap-2">
