@@ -23,6 +23,14 @@ const ChatBox = () => {
 
   return (
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-2xl px-4">
+      {/* Character Full Body - Outside Chat Bar */}
+      <div className="absolute -right-20 bottom-0">
+        <img 
+          src="/lovable-uploads/a8f4ae5e-e563-4cf3-a42c-9fa4bf292b39.png" 
+          alt="Character" 
+          className="w-24 h-auto object-contain"
+        />
+      </div>
       <div className="relative">
         {/* Main Search Box */}
         <div 
@@ -48,12 +56,6 @@ const ChatBox = () => {
               className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-lg"
             />
 
-            {/* Character Icon */}
-            <img 
-              src="/lovable-uploads/386b4f5a-c83f-4d0f-bc82-3d13a2dd7830.png" 
-              alt="Character" 
-              className="w-10 h-10 rounded-full object-cover"
-            />
 
             {/* Right Icons */}
             <div className="flex items-center gap-2">
