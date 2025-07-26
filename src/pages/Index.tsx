@@ -1,6 +1,8 @@
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import OceanSection from '@/components/OceanSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import CertificatesSection from '@/components/CertificatesSection';
 import ChatBox from '@/components/ChatBox';
 
 const Index = () => {
@@ -9,6 +11,8 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <OceanSection />
+      <ProjectsSection />
+      <CertificatesSection />
       <ChatBox />
     </div>
   );

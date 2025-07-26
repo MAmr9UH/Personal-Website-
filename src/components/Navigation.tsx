@@ -20,24 +20,30 @@ const Navigation = () => {
           
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-lg text-muted-foreground hover:text-primary transition-colors">
+            <button 
+              onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-lg text-muted-foreground hover:text-primary transition-colors"
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => document.getElementById('ocean')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-lg text-muted-foreground hover:text-primary transition-colors"
+            >
               About
-            </a>
-            <a href="#experience" className="text-lg text-muted-foreground hover:text-primary transition-colors">
-              Experience
-            </a>
-            <a href="/projects" className="text-lg text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-lg text-muted-foreground hover:text-primary transition-colors"
+            >
               Projects
-            </a>
-            <a href="#research" className="text-lg text-muted-foreground hover:text-primary transition-colors">
-              Research
-            </a>
-            <a href="/certificates" className="text-lg text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => document.getElementById('certificates')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-lg text-muted-foreground hover:text-primary transition-colors"
+            >
               Certificates
-            </a>
-            <a href="#contact" className="text-lg text-muted-foreground hover:text-primary transition-colors">
-              Contact
-            </a>
+            </button>
           </div>
           
           {/* CTA Button */}

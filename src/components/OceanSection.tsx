@@ -30,7 +30,7 @@ const OceanSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen bg-gradient-ocean">
+    <section id="ocean" className="relative min-h-screen bg-gradient-ocean">
       {/* Background Image with Parallax */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"

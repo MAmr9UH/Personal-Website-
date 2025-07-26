@@ -24,7 +24,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section id="hero" className="relative h-screen overflow-hidden">
       {/* Parallax Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center will-change-transform transition-transform duration-300 ease-out"
