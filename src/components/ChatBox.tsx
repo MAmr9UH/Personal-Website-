@@ -23,7 +23,15 @@ const ChatBox = () => {
 
   return (
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-2xl px-4">
-      <div className="relative">
+      <div className="relative flex items-end gap-4">
+        {/* Character Icon */}
+        <img 
+          src="/lovable-uploads/14c7fb19-8625-48d5-a11f-49b3b2bb9306.png" 
+          alt="Character" 
+          className="w-16 h-16 rounded-full object-cover ml-auto order-2"
+        />
+        
+        <div className="relative flex-1">
         {/* Main Search Box */}
         <div 
           className={`bg-background/80 backdrop-blur-md border border-border rounded-full shadow-lg transition-all duration-300 ${
@@ -46,13 +54,6 @@ const ChatBox = () => {
               onBlur={() => !inputValue && setIsExpanded(false)}
               placeholder="Ask anything..."
               className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-lg"
-            />
-
-            {/* Character Icon */}
-            <img 
-              src="/lovable-uploads/386b4f5a-c83f-4d0f-bc82-3d13a2dd7830.png" 
-              alt="Character" 
-              className="w-10 h-10 rounded-full object-cover"
             />
 
             {/* Right Icons */}
@@ -96,6 +97,7 @@ const ChatBox = () => {
             </div>
           </div>
         )}
+        </div>
       </div>
     </div>
   );
