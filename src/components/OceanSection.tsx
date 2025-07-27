@@ -11,23 +11,26 @@ const OceanSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const features = [
+  const researchAreas = [
     {
-      title: "Deep Learning",
-      description: "Advanced neural networks for complex pattern recognition and predictive modeling.",
+      title: "Computer Vision",
+      description: "Developing state‑of‑the‑art image‑segmentation approaches.",
       icon: "🧠"
     },
     {
-      title: "Data Engineering",
-      description: "Scalable pipelines processing massive datasets with precision and efficiency.",
-      icon: "⚡"
-    },
-    {
-      title: "AI Research",
-      description: "Pushing boundaries in artificial intelligence and machine learning innovation.",
-      icon: "🔬"
+      title: "Quantum Computing",
+      description: "Partnering with Dr. Fan Lee on an NSF‑funded initiative that applies quantum algorithms to hydrogen‑production optimization.",
+      icon: "⚛️"
     }
   ];
+
+  const highlights = [
+    "Active Kaggle competitor for three years, turning cutting‑edge research into production‑ready models.",
+    "3rd place, AWS Cloudathon – Solutions Architect track: Led migration of on‑premises infrastructure to AWS, showcasing cloud‑native ML architecture expertise.",
+    "I stay current with new technologies and state‑of‑the‑art deep‑learning models, continually seeking opportunities to apply them to complex, high‑value problems."
+  ];
+
+  const skills = ["Deep learning", "Agentic AI", "AI research"];
 
   return (
     <section id="ocean" className="relative min-h-screen bg-gradient-ocean">
@@ -46,42 +49,71 @@ const OceanSection = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-              Navigating
-              <span className="block text-primary">Data Oceans</span>
+              Mohamed Amr
+              <span className="block text-primary">Machine Learning Engineer & Researcher</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Like a precision vessel cutting through vast waters, my expertise guides organizations 
-              through the complexities of big data, delivering insights that drive global impact.
+              I'm a Machine Learning Engineer who designs intelligent systems that generate real‑world impact, 
+              learn continuously, and power data‑driven decision‑making at scale. My core tools are Python, SQL, 
+              AWS Cloud services, and LangChain. Now in my senior year of a bachelor's program, I combine academic 
+              rigor with hands‑on industry projects.
             </p>
           </div>
           
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {features.map((feature, index) => (
-              <Card 
-                key={index}
-                className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300 p-8 group hover:shadow-glow"
-              >
-                <div className="text-4xl mb-4 group-hover:animate-float">
-                  {feature.icon}
+          {/* Skills Section */}
+          <div className="text-center mb-16">
+            <h3 className="text-2xl font-bold mb-6 text-foreground">Core Expertise</h3>
+            <div className="flex flex-wrap justify-center gap-6">
+              {skills.map((skill, index) => (
+                <div key={index} className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg px-6 py-3 hover:border-primary/30 transition-all">
+                  <span className="text-lg font-semibold text-primary">{skill}</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </Card>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Research Assistantships */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-center mb-8 text-foreground">Research Assistantships</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              {researchAreas.map((area, index) => (
+                <Card 
+                  key={index}
+                  className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300 p-8 group hover:shadow-glow"
+                >
+                  <div className="text-4xl mb-4 group-hover:animate-float">
+                    {area.icon}
+                  </div>
+                  <h4 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                    {area.title}
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {area.description}
+                  </p>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Highlights */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-center mb-8 text-foreground">Highlights</h3>
+            <div className="space-y-6">
+              {highlights.map((highlight, index) => (
+                <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all p-6">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {highlight}
+                  </p>
+                </Card>
+              ))}
+            </div>
           </div>
           
           {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 gap-8 text-center">
             {[
-              { number: "50+", label: "ML Models Deployed" },
-              { number: "1B+", label: "Data Points Processed" },
-              { number: "15+", label: "Industries Served" },
-              { number: "99.7%", label: "Model Accuracy" }
+              { number: "16", label: "Projects" },
+              { number: "2", label: "Research" }
             ].map((stat, index) => (
               <div key={index} className="group">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:animate-pulse-glow">
