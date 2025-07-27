@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { useNavigate, useLocation } from 'react-router-dom';
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -21,13 +24,19 @@ const Navigation = () => {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             <button 
-              onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                if (location.pathname !== '/') {
+                  navigate('/');
+                } else {
+                  document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="text-lg text-muted-foreground hover:text-primary transition-colors"
             >
               Home
             </button>
             <button 
-              onClick={() => document.getElementById('ocean')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => navigate('/about')}
               className="text-lg text-muted-foreground hover:text-primary transition-colors"
             >
               About
