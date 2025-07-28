@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import mountainHero from '@/assets/mountain-hero.jpg';
+import NeuralNetworkBackground from './NeuralNetworkBackground';
 
 const HeroSection = () => {
   const [offsetY, setOffsetY] = useState(0);
@@ -24,18 +25,21 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative h-screen overflow-hidden">
-      {/* Parallax Background */}
+    <section id="hero" className="relative h-screen overflow-hidden bg-gradient-to-br from-background via-background/95 to-background/90">
+      {/* Neural Network Background */}
+      <NeuralNetworkBackground />
+      
+      {/* Original Mountain Background (reduced opacity) */}
       <div 
-        className="absolute inset-0 bg-cover bg-center will-change-transform transition-transform duration-300 ease-out"
+        className="absolute inset-0 bg-cover bg-center will-change-transform transition-transform duration-300 ease-out opacity-20"
         style={{
           backgroundImage: `url(${mountainHero})`,
           transform: `translate3d(${mouseX * 20}px, ${Math.min(offsetY * 0.4, 60) + mouseY * 15}px, 0) scale(1.05)`
         }}
       />
       
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background/80" />
+      {/* Enhanced Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-background/80" />
       
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-4">
