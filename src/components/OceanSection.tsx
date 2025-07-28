@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Linkedin, Github } from 'lucide-react';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import AnimatedSection from './AnimatedSection';
 import oceanTanker from '@/assets/ocean-tanker.jpg';
 
 const OceanSection = () => {
   const [scrollY, setScrollY] = useState(0);
-  const headerReveal = useScrollReveal({ threshold: 0.2 });
-  const skillsReveal = useScrollReveal({ threshold: 0.3 });
-  const researchReveal = useScrollReveal({ threshold: 0.2 });
-  const highlightsReveal = useScrollReveal({ threshold: 0.2 });
-  const statsReveal = useScrollReveal({ threshold: 0.3 });
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -47,18 +42,12 @@ const OceanSection = () => {
       <div className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div 
-            ref={headerReveal.elementRef}
-            className={`text-center mb-16 transition-all duration-1000 ${
-              headerReveal.isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-              Meet Mohamed Amr
-              <span className="block text-primary text-4xl">Machine Learning & Researcher</span>
-            </h2>
+          <AnimatedSection animationType="slide-up" delay={200}>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+                Meet Mohamed Amr
+                <span className="block text-primary text-4xl">Machine Learning & Researcher</span>
+              </h2>
             
             {/* Social Links */}
             <div className="flex justify-center gap-4 mt-6 mb-8">
@@ -86,104 +75,91 @@ const OceanSection = () => {
               AWS Cloud services, and LangChain. Now in my senior year of a bachelor's program, I combine academic 
               rigor with hands‑on industry projects.
             </p>
-          </div>
+            </div>
+          </AnimatedSection>
           
           {/* Skills Section */}
-          <div 
-            ref={skillsReveal.elementRef}
-            className={`text-center mb-16 transition-all duration-1000 delay-200 ${
-              skillsReveal.isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <h3 className="text-2xl font-bold mb-6 text-foreground">Core Expertise</h3>
-            <div className="flex flex-wrap justify-center gap-6">
-              {skills.map((skill, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg px-6 py-3 hover:border-primary/30 transition-all duration-700 ${
-                    skillsReveal.isVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-4'
-                  }`}
-                  style={{ transitionDelay: `${index * 100 + 400}ms` }}
-                >
-                  <span className="font-semibold text-primary text-lg">{skill}</span>
-                </div>
-              ))}
+          <AnimatedSection animationType="slide-up" delay={400}>
+            <div className="text-center mb-16">
+              <h3 className="text-2xl font-bold mb-6 text-foreground">Core Expertise</h3>
+              <div className="flex flex-wrap justify-center gap-6">
+                {skills.map((skill, index) => (
+                  <div 
+                    key={index} 
+                    className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg px-6 py-3 hover:border-primary/30 transition-all"
+                  >
+                    <span className="font-semibold text-primary text-lg">{skill}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </AnimatedSection>
 
           {/* Research Assistantships */}
-          <div 
-            ref={researchReveal.elementRef}
-            className={`mb-16 transition-all duration-1000 delay-300 ${
-              researchReveal.isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <h3 className="text-3xl font-bold text-center mb-8 text-foreground">Research Assistantships</h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              {researchAreas.map((area, index) => (
-                <Card 
-                  key={index} 
-                  className={`bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-700 p-8 group hover:shadow-glow ${
-                    researchReveal.isVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-8'
-                  }`}
-                  style={{ transitionDelay: `${index * 200 + 600}ms` }}
-                >
-                  <div className="text-4xl mb-4 group-hover:animate-float">
-                    {area.icon}
-                  </div>
-                  <h4 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
-                    {area.title}
-                  </h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {area.description}
-                  </p>
-                </Card>
-              ))}
+          <AnimatedSection animationType="slide-up" delay={600}>
+            <div className="mb-16">
+              <h3 className="text-3xl font-bold text-center mb-8 text-foreground">Research Assistantships</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                {researchAreas.map((area, index) => (
+                  <Card 
+                    key={index} 
+                    className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300 p-8 group hover:shadow-glow"
+                  >
+                    <div className="text-4xl mb-4 group-hover:animate-float">
+                      {area.icon}
+                    </div>
+                    <h4 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                      {area.title}
+                    </h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {area.description}
+                    </p>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
+          </AnimatedSection>
+
+          {/* Highlights */}
+          <AnimatedSection animationType="slide-left" delay={800}>
+            <div className="mb-16">
+              <h3 className="text-3xl font-bold text-center mb-8 text-foreground">Highlights</h3>
+              <div className="space-y-6">
+                {highlights.map((highlight, index) => (
+                  <Card 
+                    key={index} 
+                    className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all p-6"
+                  >
+                    <p className="text-muted-foreground leading-relaxed">
+                      {highlight}
+                    </p>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
           
           {/* Stats Section */}
-          <div 
-            ref={statsReveal.elementRef}
-            className={`grid grid-cols-2 gap-8 text-center transition-all duration-1000 delay-500 ${
-              statsReveal.isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
-            {[{
-              number: "16",
-              label: "Projects"
-            }, {
-              number: "2",
-              label: "Research"
-            }].map((stat, index) => (
-              <div 
-                key={index} 
-                className={`group transition-all duration-700 ${
-                  statsReveal.isVisible 
-                    ? 'opacity-100 scale-100' 
-                    : 'opacity-0 scale-75'
-                }`}
-                style={{ transitionDelay: `${index * 200 + 1000}ms` }}
-              >
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:animate-pulse-glow">
-                  {stat.number}
+          <AnimatedSection animationType="scale" delay={1000}>
+            <div className="grid grid-cols-2 gap-8 text-center">
+              {[{
+                number: "16",
+                label: "Projects"
+              }, {
+                number: "2",
+                label: "Research"
+              }].map((stat, index) => (
+                <div key={index} className="group">
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:animate-pulse-glow">
+                    {stat.number}
+                  </div>
+                  <div className="text-muted-foreground text-sm md:text-base">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-muted-foreground text-sm md:text-base">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>
