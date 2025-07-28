@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
-import AnimatedSection from './AnimatedSection';
 import shipCabinBg from '@/assets/ship-cabin.jpg';
 
 const ProjectsSection = () => {
@@ -60,49 +59,47 @@ const ProjectsSection = () => {
       {/* Content */}
       <div className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <AnimatedSection animationType="slide-up" delay={200}>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-                Innovation
-                <span className="block text-primary">Portfolio</span>
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Showcasing innovative machine learning solutions and AI applications that solve real-world problems.
-              </p>
-            </div>
-          </AnimatedSection>
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+              Innovation
+              <span className="block text-primary">Portfolio</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Showcasing innovative machine learning solutions and AI applications that solve real-world problems.
+            </p>
+          </div>
 
-          <AnimatedSection animationType="slide-up" delay={400}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {projects.map((project, index) => (
-                <Card key={index} className="bg-card/60 backdrop-blur-sm border-border/50 hover:bg-card/80 transition-all duration-300 hover:shadow-glow">
-                  <CardHeader>
-                    <CardTitle className="text-2xl text-foreground">{project.title}</CardTitle>
-                    <p className="text-muted-foreground">{project.description}</p>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="secondary" className="bg-primary/10 text-primary border-primary/20">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex gap-3">
-                      <Button variant="outline" size="sm" className="border-primary/30 hover:border-primary">
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
-                      </Button>
-                      <Button variant="outline" size="sm" className="border-primary/30 hover:border-primary">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Demo
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </AnimatedSection>
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <Card key={index} className="bg-card/60 backdrop-blur-sm border-border/50 hover:bg-card/80 transition-all duration-300 hover:shadow-glow">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-foreground">{project.title}</CardTitle>
+                  <p className="text-muted-foreground">{project.description}</p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech, techIndex) => (
+                      <Badge key={techIndex} variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    <Button variant="outline" size="sm" className="border-primary/30 hover:border-primary">
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                    <Button variant="outline" size="sm" className="border-primary/30 hover:border-primary">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Demo
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>

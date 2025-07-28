@@ -4,8 +4,6 @@ interface ScrollRevealOptions {
   threshold?: number;
   rootMargin?: string;
   triggerOnce?: boolean;
-  animationType?: 'fade' | 'slide-up' | 'slide-left' | 'slide-right' | 'scale';
-  delay?: number;
 }
 
 export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
@@ -15,9 +13,7 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
   const {
     threshold = 0.1,
     rootMargin = '0px 0px -50px 0px',
-    triggerOnce = true,
-    animationType = 'fade',
-    delay = 0
+    triggerOnce = true
   } = options;
 
   useEffect(() => {
@@ -27,9 +23,7 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsVisible(true);
-          }, delay);
+          setIsVisible(true);
           if (triggerOnce) {
             observer.unobserve(element);
           }
@@ -45,33 +39,7 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
     return () => {
       observer.unobserve(element);
     };
-  }, [threshold, rootMargin, triggerOnce, delay]);
+  }, [threshold, rootMargin, triggerOnce]);
 
-  const getAnimationClasses = () => {
-    const baseClasses = "transition-all duration-1000 ease-out";
-    
-    if (!isVisible) {
-      switch (animationType) {
-        case 'slide-up':
-          return `${baseClasses} opacity-0 translate-y-8`;
-        case 'slide-left':
-          return `${baseClasses} opacity-0 translate-x-8`;
-        case 'slide-right':
-          return `${baseClasses} opacity-0 -translate-x-8`;
-        case 'scale':
-          return `${baseClasses} opacity-0 scale-75`;
-        case 'fade':
-        default:
-          return `${baseClasses} opacity-0`;
-      }
-    }
-    
-    return `${baseClasses} opacity-100 translate-y-0 translate-x-0 scale-100`;
-  };
-
-  return { 
-    elementRef, 
-    isVisible, 
-    animationClasses: getAnimationClasses() 
-  };
+  return { elementRef, isVisible };
 };
