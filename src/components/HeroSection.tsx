@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import mountainHero from '@/assets/mountain-hero.jpg';
-import neuralNetworkLeft from '@/assets/neural-network-left.png';
-import brainRight from '@/assets/brain-right.png';
 const HeroSection = () => {
   const [offsetY, setOffsetY] = useState(0);
   const [mouseX, setMouseX] = useState(0);
@@ -37,14 +35,104 @@ const HeroSection = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background/80" />
       
-      {/* Neural Network Overlay - Left */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-96 opacity-30 pointer-events-none">
-        <img src={neuralNetworkLeft} alt="" className="w-full h-full object-contain" />
+      {/* Neural Network Effect - Left */}
+      <div className="absolute left-0 top-0 w-96 h-full opacity-40 pointer-events-none overflow-hidden">
+        <svg className="w-full h-full" viewBox="0 0 400 800" fill="none">
+          {/* Neural Network Nodes */}
+          <circle cx="80" cy="150" r="3" fill="#00d4ff" className="animate-pulse">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="120" cy="200" r="2.5" fill="#8b5cf6" className="animate-pulse">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="60" cy="250" r="2" fill="#06b6d4" className="animate-pulse">
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="140" cy="320" r="3.5" fill="#3b82f6" className="animate-pulse">
+            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="90" cy="380" r="2.8" fill="#a855f7" className="animate-pulse">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" />
+          </circle>
+          
+          {/* Connection Lines */}
+          <line x1="80" y1="150" x2="120" y2="200" stroke="url(#blueGradient)" strokeWidth="1" opacity="0.6">
+            <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite" />
+          </line>
+          <line x1="120" y1="200" x2="60" y2="250" stroke="url(#purpleGradient)" strokeWidth="1" opacity="0.5">
+            <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.5s" repeatCount="indefinite" />
+          </line>
+          <line x1="60" y1="250" x2="140" y2="320" stroke="url(#cyanGradient)" strokeWidth="1" opacity="0.7">
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+          </line>
+          <line x1="140" y1="320" x2="90" y2="380" stroke="url(#blueGradient)" strokeWidth="1" opacity="0.6">
+            <animate attributeName="opacity" values="0.2;0.8;0.2" dur="1.8s" repeatCount="indefinite" />
+          </line>
+          
+          {/* Gradients */}
+          <defs>
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00d4ff" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.2" />
+            </linearGradient>
+            <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#a855f7" stopOpacity="0.2" />
+            </linearGradient>
+            <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#00d4ff" stopOpacity="0.2" />
+            </linearGradient>
+          </defs>
+        </svg>
+        
+        {/* Soft Glow Effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-cyan-500/5 to-transparent blur-xl"></div>
       </div>
       
-      {/* Brain Overlay - Right */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-96 opacity-30 pointer-events-none">
-        <img src={brainRight} alt="" className="w-full h-full object-contain" />
+      {/* Brain Effect - Right */}
+      <div className="absolute right-0 top-0 w-96 h-full opacity-30 pointer-events-none overflow-hidden">
+        <svg className="w-full h-full" viewBox="0 0 400 800" fill="none">
+          {/* Brain Outline */}
+          <path d="M280 200 Q320 180 350 220 Q370 260 350 300 Q340 340 320 360 Q290 380 280 350 Q270 320 260 300 Q250 280 260 250 Q270 220 280 200" 
+                stroke="url(#pinkGradient)" strokeWidth="2" fill="none" opacity="0.6">
+            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite" />
+          </path>
+          
+          {/* Internal Brain Lines */}
+          <path d="M280 230 Q300 240 310 260 Q300 280 290 300" stroke="url(#orangeGradient)" strokeWidth="1.5" fill="none" opacity="0.5">
+            <animate attributeName="opacity" values="0.2;0.7;0.2" dur="3s" repeatCount="indefinite" />
+          </path>
+          <path d="M290 220 Q320 230 330 250 Q320 270 300 280" stroke="url(#pinkGradient)" strokeWidth="1.5" fill="none" opacity="0.4">
+            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.5s" repeatCount="indefinite" />
+          </path>
+          
+          {/* Brain Nodes */}
+          <circle cx="285" cy="240" r="2" fill="#f97316" className="animate-pulse">
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="315" cy="270" r="2.5" fill="#ec4899" className="animate-pulse">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="300" cy="300" r="2" fill="#f59e0b" className="animate-pulse">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite" />
+          </circle>
+          
+          {/* Gradients */}
+          <defs>
+            <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ec4899" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#f97316" stopOpacity="0.2" />
+            </linearGradient>
+            <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f97316" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#f59e0b" stopOpacity="0.2" />
+            </linearGradient>
+          </defs>
+        </svg>
+        
+        {/* Soft Glow Effect */}
+        <div className="absolute inset-0 bg-gradient-to-l from-pink-500/10 via-orange-500/5 to-transparent blur-xl"></div>
       </div>
       
       {/* Content */}
