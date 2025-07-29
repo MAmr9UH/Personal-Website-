@@ -81,11 +81,11 @@ const CertificatesSection = () => {
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground opacity-0 translate-y-8 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
               Professional
               <span className="block text-primary">Certifications</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed opacity-0 translate-y-8 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
               Professional certifications demonstrating expertise in machine learning, cloud platforms, and AI technologies.
             </p>
           </div>

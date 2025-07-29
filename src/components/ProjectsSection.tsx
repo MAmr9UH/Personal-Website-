@@ -61,11 +61,11 @@ const ProjectsSection = () => {
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground opacity-0 translate-y-8 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
               Innovation
               <span className="block text-primary">Portfolio</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed opacity-0 translate-y-8 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
               Showcasing innovative machine learning solutions and AI applications that solve real-world problems.
             </p>
           </div>

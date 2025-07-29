@@ -34,6 +34,114 @@ const HeroSection = () => {
         }}
       />
       
+      {/* Neural Network - Left Side */}
+      <div className="absolute left-0 top-0 w-1/3 h-full overflow-hidden opacity-40">
+        <svg className="w-full h-full" viewBox="0 0 400 800" fill="none">
+          {/* Animated Nodes */}
+          <circle cx="50" cy="150" r="4" fill="url(#neuralGradient1)" className="animate-pulse" style={{ animationDelay: '0s' }} />
+          <circle cx="120" cy="100" r="3" fill="url(#neuralGradient2)" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <circle cx="180" cy="200" r="5" fill="url(#neuralGradient1)" className="animate-pulse" style={{ animationDelay: '1s' }} />
+          <circle cx="80" cy="300" r="3" fill="url(#neuralGradient3)" className="animate-pulse" style={{ animationDelay: '1.5s' }} />
+          <circle cx="150" cy="350" r="4" fill="url(#neuralGradient2)" className="animate-pulse" style={{ animationDelay: '2s' }} />
+          <circle cx="220" cy="450" r="3" fill="url(#neuralGradient1)" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
+          <circle cx="90" cy="550" r="5" fill="url(#neuralGradient3)" className="animate-pulse" style={{ animationDelay: '0.8s' }} />
+          <circle cx="170" cy="600" r="4" fill="url(#neuralGradient2)" className="animate-pulse" style={{ animationDelay: '1.3s' }} />
+          
+          {/* Interconnecting Lines */}
+          <path d="M50 150 L120 100" stroke="url(#lineGradient1)" strokeWidth="1" opacity="0.6" className="animate-pulse" style={{ animationDelay: '0.2s' }} />
+          <path d="M120 100 L180 200" stroke="url(#lineGradient2)" strokeWidth="1" opacity="0.5" className="animate-pulse" style={{ animationDelay: '0.7s' }} />
+          <path d="M180 200 L80 300" stroke="url(#lineGradient1)" strokeWidth="1" opacity="0.4" className="animate-pulse" style={{ animationDelay: '1.2s' }} />
+          <path d="M80 300 L150 350" stroke="url(#lineGradient3)" strokeWidth="1" opacity="0.6" className="animate-pulse" style={{ animationDelay: '1.7s' }} />
+          <path d="M150 350 L220 450" stroke="url(#lineGradient2)" strokeWidth="1" opacity="0.5" className="animate-pulse" style={{ animationDelay: '0.4s' }} />
+          <path d="M220 450 L90 550" stroke="url(#lineGradient1)" strokeWidth="1" opacity="0.4" className="animate-pulse" style={{ animationDelay: '0.9s' }} />
+          <path d="M90 550 L170 600" stroke="url(#lineGradient3)" strokeWidth="1" opacity="0.6" className="animate-pulse" style={{ animationDelay: '1.4s' }} />
+          
+          {/* Gradients */}
+          <defs>
+            <radialGradient id="neuralGradient1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#00d4ff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#0080ff" stopOpacity="0.3" />
+            </radialGradient>
+            <radialGradient id="neuralGradient2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#00ffff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#0040ff" stopOpacity="0.3" />
+            </radialGradient>
+            <radialGradient id="neuralGradient3" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#8000ff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#4000ff" stopOpacity="0.3" />
+            </radialGradient>
+            <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00d4ff" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#0080ff" stopOpacity="0.2" />
+            </linearGradient>
+            <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00ffff" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#8000ff" stopOpacity="0.3" />
+            </linearGradient>
+            <linearGradient id="lineGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#8000ff" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#4000ff" stopOpacity="0.2" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      {/* Brain - Right Side */}
+      <div className="absolute right-0 top-0 w-1/3 h-full overflow-hidden opacity-30">
+        <svg className="w-full h-full" viewBox="0 0 400 800" fill="none">
+          {/* Brain Outline */}
+          <path 
+            d="M150 200 Q200 150 250 200 Q280 250 250 300 Q280 350 250 400 Q200 450 150 400 Q120 350 150 300 Q120 250 150 200 Z" 
+            stroke="url(#brainGradient1)" 
+            strokeWidth="2" 
+            fill="none" 
+            opacity="0.6"
+            className="animate-pulse"
+            style={{ animationDelay: '0s' }}
+          />
+          
+          {/* Internal Brain Lines */}
+          <path d="M150 250 Q200 230 250 250" stroke="url(#brainGradient2)" strokeWidth="1.5" opacity="0.5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <path d="M150 300 Q200 280 250 300" stroke="url(#brainGradient1)" strokeWidth="1.5" opacity="0.4" className="animate-pulse" style={{ animationDelay: '1s' }} />
+          <path d="M150 350 Q200 330 250 350" stroke="url(#brainGradient3)" strokeWidth="1.5" opacity="0.6" className="animate-pulse" style={{ animationDelay: '1.5s' }} />
+          
+          {/* Glowing Nodes */}
+          <circle cx="180" cy="230" r="3" fill="url(#brainNodeGradient1)" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
+          <circle cx="220" cy="270" r="4" fill="url(#brainNodeGradient2)" className="animate-pulse" style={{ animationDelay: '0.8s' }} />
+          <circle cx="200" cy="320" r="3" fill="url(#brainNodeGradient1)" className="animate-pulse" style={{ animationDelay: '1.3s' }} />
+          <circle cx="170" cy="360" r="5" fill="url(#brainNodeGradient3)" className="animate-pulse" style={{ animationDelay: '1.8s' }} />
+          <circle cx="230" cy="340" r="3" fill="url(#brainNodeGradient2)" className="animate-pulse" style={{ animationDelay: '0.6s' }} />
+          
+          {/* Brain Gradients */}
+          <defs>
+            <linearGradient id="brainGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ff6b9d" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#ff8c42" stopOpacity="0.4" />
+            </linearGradient>
+            <linearGradient id="brainGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ff8c42" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#ffa726" stopOpacity="0.3" />
+            </linearGradient>
+            <linearGradient id="brainGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ffa726" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#ff6b9d" stopOpacity="0.2" />
+            </linearGradient>
+            <radialGradient id="brainNodeGradient1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#ff6b9d" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ff8c42" stopOpacity="0.3" />
+            </radialGradient>
+            <radialGradient id="brainNodeGradient2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#ff8c42" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ffa726" stopOpacity="0.3" />
+            </radialGradient>
+            <radialGradient id="brainNodeGradient3" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#ffa726" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ff6b9d" stopOpacity="0.3" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background/80" />
       
