@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/card';
-import { Linkedin, Github } from 'lucide-react';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 import oceanTanker from '@/assets/ocean-tanker.jpg';
 
 const OceanSection = () => {
   const [scrollY, setScrollY] = useState(0);
-  const headerReveal = useScrollReveal({ threshold: 0.2 });
-  const skillsReveal = useScrollReveal({ threshold: 0.3 });
-  const researchReveal = useScrollReveal({ threshold: 0.2 });
-  const highlightsReveal = useScrollReveal({ threshold: 0.2 });
-  const statsReveal = useScrollReveal({ threshold: 0.3 });
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -18,68 +11,47 @@ const OceanSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const researchAreas = [{
-    title: "Computer Vision",
-    description: "Developing state‑of‑the‑art image‑segmentation approaches.",
-    icon: "👁️"
-  }, {
-    title: "Quantum Computing",
-    description: "Partnering with Dr. Fan Lee on an NSF‑funded initiative that applies quantum algorithms to hydrogen‑production optimization.",
-    icon: "⚛️"
-  }];
+  const researchAreas = [
+    {
+      title: "Computer Vision",
+      description: "Developing state‑of‑the‑art image‑segmentation approaches.",
+      icon: "🧠"
+    },
+    {
+      title: "Quantum Computing",
+      description: "Partnering with Dr. Fan Lee on an NSF‑funded initiative that applies quantum algorithms to hydrogen‑production optimization.",
+      icon: "⚛️"
+    }
+  ];
 
-  const highlights = ["Active Kaggle competitor for three years, turning cutting‑edge research into production‑ready models.", "🏆3rd place, AWS Cloudathon – Solutions Architect track: Led migration of on‑premises infrastructure to AWS, showcasing cloud‑native ML architecture expertise.", "I stay current with new technologies and state‑of‑the‑art deep‑learning models, continually seeking opportunities to apply them to complex, high‑value problems."];
+  const highlights = [
+    "Active Kaggle competitor for three years, turning cutting‑edge research into production‑ready models.",
+    "3rd place, AWS Cloudathon – Solutions Architect track: Led migration of on‑premises infrastructure to AWS, showcasing cloud‑native ML architecture expertise.",
+    "I stay current with new technologies and state‑of‑the‑art deep‑learning models, continually seeking opportunities to apply them to complex, high‑value problems."
+  ];
 
-  const skills = ["🧠Deep learning", "🤖Agentic AI", "🔬AI research"];
+  const skills = ["Deep learning", "Agentic AI", "AI research"];
 
   return (
     <section id="ocean" className="relative min-h-screen bg-gradient-ocean">
       {/* Background Image with Parallax */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" 
-        style={{
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+        style={{ 
           backgroundImage: `url(${oceanTanker})`,
-          transform: `translateY(${(scrollY - window.innerHeight) * 0.3}px)`
-        }} 
+          transform: `translateY(${(scrollY - window.innerHeight) * 0.3}px)`,
+        }}
       />
       
       {/* Content */}
       <div className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div 
-            ref={headerReveal.elementRef}
-            className={`text-center mb-16 transition-all duration-1000 ${
-              headerReveal.isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-              Meet Mohamed Amr
-              <span className="block text-primary text-4xl">Machine Learning & Researcher</span>
+              Mohamed Amr
+              <span className="block text-primary">Machine Learning Engineer & Researcher</span>
             </h2>
-            
-            {/* Social Links */}
-            <div className="flex justify-center gap-4 mt-6 mb-8">
-              <a 
-                href="http://linkedin.com/in/Mohamed-Amr-UH" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-3 bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg hover:border-primary/30 transition-all hover:shadow-glow"
-              >
-                <Linkedin className="w-6 h-6 text-primary" />
-              </a>
-              <a 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-3 bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg hover:border-primary/30 transition-all hover:shadow-glow"
-              >
-                <Github className="w-6 h-6 text-primary" />
-              </a>
-            </div>
-            
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               I'm a Machine Learning Engineer who designs intelligent systems that generate real‑world impact, 
               learn continuously, and power data‑driven decision‑making at scale. My core tools are Python, SQL, 
@@ -89,52 +61,25 @@ const OceanSection = () => {
           </div>
           
           {/* Skills Section */}
-          <div 
-            ref={skillsReveal.elementRef}
-            className={`text-center mb-16 transition-all duration-1000 delay-200 ${
-              skillsReveal.isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
+          <div className="text-center mb-16">
             <h3 className="text-2xl font-bold mb-6 text-foreground">Core Expertise</h3>
             <div className="flex flex-wrap justify-center gap-6">
               {skills.map((skill, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg px-6 py-3 hover:border-primary/30 transition-all duration-700 ${
-                    skillsReveal.isVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-4'
-                  }`}
-                  style={{ transitionDelay: `${index * 100 + 400}ms` }}
-                >
-                  <span className="font-semibold text-primary text-lg">{skill}</span>
+                <div key={index} className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg px-6 py-3 hover:border-primary/30 transition-all">
+                  <span className="text-lg font-semibold text-primary">{skill}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Research Assistantships */}
-          <div 
-            ref={researchReveal.elementRef}
-            className={`mb-16 transition-all duration-1000 delay-300 ${
-              researchReveal.isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
+          <div className="mb-16">
             <h3 className="text-3xl font-bold text-center mb-8 text-foreground">Research Assistantships</h3>
             <div className="grid md:grid-cols-2 gap-8">
               {researchAreas.map((area, index) => (
                 <Card 
-                  key={index} 
-                  className={`bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-700 p-8 group hover:shadow-glow ${
-                    researchReveal.isVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-8'
-                  }`}
-                  style={{ transitionDelay: `${index * 200 + 600}ms` }}
+                  key={index}
+                  className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300 p-8 group hover:shadow-glow"
                 >
                   <div className="text-4xl mb-4 group-hover:animate-float">
                     {area.icon}
@@ -149,32 +94,28 @@ const OceanSection = () => {
               ))}
             </div>
           </div>
+
+          {/* Highlights */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-center mb-8 text-foreground">Highlights</h3>
+            <div className="space-y-6">
+              {highlights.map((highlight, index) => (
+                <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all p-6">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {highlight}
+                  </p>
+                </Card>
+              ))}
+            </div>
+          </div>
           
           {/* Stats Section */}
-          <div 
-            ref={statsReveal.elementRef}
-            className={`grid grid-cols-2 gap-8 text-center transition-all duration-1000 delay-500 ${
-              statsReveal.isVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
-            {[{
-              number: "16",
-              label: "Projects"
-            }, {
-              number: "2",
-              label: "Research"
-            }].map((stat, index) => (
-              <div 
-                key={index} 
-                className={`group transition-all duration-700 ${
-                  statsReveal.isVisible 
-                    ? 'opacity-100 scale-100' 
-                    : 'opacity-0 scale-75'
-                }`}
-                style={{ transitionDelay: `${index * 200 + 1000}ms` }}
-              >
+          <div className="grid grid-cols-2 gap-8 text-center">
+            {[
+              { number: "16", label: "Projects" },
+              { number: "2", label: "Research" }
+            ].map((stat, index) => (
+              <div key={index} className="group">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:animate-pulse-glow">
                   {stat.number}
                 </div>
