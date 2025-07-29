@@ -71,7 +71,7 @@ const OceanSection = () => {
                 <Linkedin className="w-6 h-6 text-primary" />
               </a>
               <a 
-                href="https://github.com/MAmr9UH" 
+                href="#" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg hover:border-primary/30 transition-all hover:shadow-glow"
