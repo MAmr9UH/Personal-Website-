@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import mountainHero from '@/assets/mountain-hero.jpg';
+import neuralNetworkLeft from '@/assets/neural-network-left.png';
+import brainRight from '@/assets/brain-right.png';
 const HeroSection = () => {
   const [offsetY, setOffsetY] = useState(0);
   const [mouseX, setMouseX] = useState(0);
@@ -34,6 +36,16 @@ const HeroSection = () => {
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background/80" />
+      
+      {/* Neural Network Overlay - Left */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-96 opacity-30 pointer-events-none">
+        <img src={neuralNetworkLeft} alt="" className="w-full h-full object-contain" />
+      </div>
+      
+      {/* Brain Overlay - Right */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-96 opacity-30 pointer-events-none">
+        <img src={brainRight} alt="" className="w-full h-full object-contain" />
+      </div>
       
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-4">
