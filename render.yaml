@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: mohamed-backend
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false   # we’ll set it securely in the dashboard after deploy
+    autoDeploy: true

@@ -1,0 +1,24 @@
+
+python-dotenv   # if you want to store API keys in .env
+
+sentence-transformers
+langchain
+langchain-core
+langsmith
+
+langserve
+
+pypdf
+
+chromadb
+dotenv
+sse_starlette
+uvicorn
+fastapi
+
+langchain_openai
+langchain_groq
+langchain_huggingface
+langchain_community
+langchain_chroma
+langchain_text_splitters
