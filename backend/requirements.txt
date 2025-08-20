@@ -1,14 +1,32 @@
-fastapi==0.116.1
-uvicorn==0.35.0
-python-dotenv==1.1.1
-requests==2.32.5
-pypdf==5.1.0
 
-langchain==0.3.27
-langchain-core==0.3.74
-langchain-community==0.3.27
-langchain-groq==0.3.7
-groq==0.31.0
+python-dotenv   # if you want to store API keys in .env
 
-pinecone==7.3.0
+sentence-transformers
+langchain
+langchain-core
+langsmith
 
+langserve
+
+pypdf
+
+chromadb
+dotenv
+sse_starlette
+uvicorn
+fastapi
+
+
+langchain_groq
+langchain_huggingface
+langchain_community
+langchain_chroma
+langchain_text_splitters
+
+
+fastapi
+uvicorn
+
+
+
+pinecone
