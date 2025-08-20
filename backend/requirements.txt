@@ -7,3 +7,4 @@ requests
 pinecone-client
 langchain
 langchain-groq
+
