@@ -49,6 +49,7 @@ class _PineconeVS:
                 docs.append({"page_content": meta.get("text", ""), "score": m.get("score", 0.0)})
             return docs
         return _retrieve
+        
 
 def get_vectorstore(pdf_path=None, persist_dir=None, model_name: str = "", target_chunks: int = 1, rebuild: bool = False):
     api_key = os.environ["PINECONE_API_KEY"]
