@@ -1,20 +1,19 @@
-# assistant/ingest.py
-from pdfLoader import load_pdf_chunks
-from vectorstore import get_vectorstore
+#/Users/mohamedamr/Desktop/website_3/vista-flow-code/assistant/ingest.py
+from pathlib import Path
+from .vectorstore import get_vectorstore, DEFAULT_PERSIST_DIR
 
-PDF_PATH = "assistant/AboutME.pdf"
-INDEX_NAME = "aboutme"
+
+
 
 if __name__ == "__main__":
-    # Load chunks from PDF
-    docs = load_pdf_chunks(PDF_PATH)
-    if not docs:
-        raise SystemExit("❌ No text extracted from PDF.")
+    pdf = Path(__file__).parent / "AboutME.pdf"
+    vs = get_vectorstore(
+        pdf_path=pdf,
+        persist_dir=DEFAULT_PERSIST_DIR,
+        target_chunks=1,   # your 570-word PDF → keep whole
+        rebuild=True,      # force rebuild on ingest
+    )
+    print("✅ Chroma vectorstore built at:", DEFAULT_PERSIST_DIR)
+    print("   Collections:", vs._collection.count())  # simple sanity check
 
-    # Get Pinecone-backed vectorstore
-    vs = get_vectorstore(INDEX_NAME)
 
-    # Add docs
-    vs.add_documents(docs)
-
-    print(f"✅ Upserted {len(docs)} chunks to Pinecone index '{INDEX_NAME}' (namespace='{INDEX_NAME}')")
