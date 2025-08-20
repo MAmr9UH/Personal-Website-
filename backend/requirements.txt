@@ -1,13 +1,9 @@
 fastapi
 uvicorn
+sse_starlette
 pypdf
 python-dotenv
 requests
+pinecone-client
 langchain
 langchain-groq
-langchain_community
-langchain_chroma
-langchain_text_splitters
-chromadb
-langchain_huggingface
-sentence-transformers
