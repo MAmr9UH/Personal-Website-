@@ -2,7 +2,6 @@
 from __future__ import annotations
 from typing import Dict, List, Optional
 from pathlib import Path
-from operator import itemgetter
 
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
@@ -17,21 +16,23 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_community.chat_message_histories import ChatMessageHistory
 
 from .vectorstore import get_vectorstore, get_retriever, DEFAULT_PERSIST_DIR
+from .seeds import SEED_MESSAGES  # <-- NEW import
 
 # =========================
 # Behavior & prompts
 # =========================
+
+
+
 SYSTEM = (
-    "You are Mohamed's assistant. Answer using the retrieved context about "
-    "Mohamed’s career, skills, projects, education, and professional activities. "
-    "If the user asks general questions that are not about Mohamed, reply: "
-    "'I have been programmed to answer questions about Mohamed’s career and profile.' "
-    "If the user asks anything inappropriate, sensitive, or outside professional scope, reply: "
-    "'I don’t have that information in my records. You might reach out to Mohamed at maamr@cougarnet.uh.edu.' "
-    "Never use phrases like 'based on the documentation', 'according to the text', or "
-    "'based on the provided text'. Answer directly and confidently. "
-    "If the answer is not in the retrieved context, use the same email fallback."
+    "You are Mohamed's personal assistant. "
+    "Always answer based on the retrieved context."
+    "Only provide  precise and accurate about  Mohamed’s career, skills, projects, education, "
+    "professional activities. "
+
+
 )
+
 
 QA_PROMPT = ChatPromptTemplate.from_messages([
     ("system", SYSTEM),
@@ -40,18 +41,23 @@ QA_PROMPT = ChatPromptTemplate.from_messages([
 ])
 
 # =========================
-# Simple router rules
+# Router rules
 # =========================
-GENERAL_MESSAGE = "I have been programmed to answer questions about Mohamed’s career and profile."
-INAPPROPRIATE_MESSAGE = "I don’t have that information in my records. You might reach out to Mohamed at maamr@cougarnet.uh.edu."
+INAPPROPRIATE_MESSAGE = (
+    "I don’t have that information in my records. You might reach out to Mohamed at "
+    "maamr@cougarnet.uh.edu."
+)
 
 INAPPROPRIATE_KEYWORDS = {
     "home address", "address", "phone number", "private number", "ssn", "passport",
     "salary", "religion", "political opinion", "donation", "girlfriend", "sex",
 }
+
 def is_inappropriate(q: str) -> bool:
     ql = q.lower()
     return any(k in ql for k in INAPPROPRIATE_KEYWORDS)
+
+
 
 # =========================
 # Chain factory (Pinecone retriever under the hood)
@@ -72,14 +78,13 @@ def make_chat_chain(
     retriever = get_retriever(vs, k=k)
 
     def format_docs(docs):
-        # supports both LC Documents and our dict fallback
         try:
             return "\n\n---\n\n".join(getattr(d, "page_content", d["page_content"]) for d in docs)
         except Exception:
             return ""
 
     # LLM
-    llm = ChatGroq(model="Gemma2-9b-it", temperature=0)
+    llm = ChatGroq(model="llama3-70b-8192", temperature=0)
 
     # RAG base: retrieve → prompt → llm → text
     base_chain = (
@@ -93,9 +98,10 @@ def make_chat_chain(
         | StrOutputParser()
     )
 
-    # Router: inappropriate → canned; else → RAG
+    # Router: inappropriate → canned; off-topic → canned; else → RAG
     router = RunnableBranch(
         (lambda x: is_inappropriate(x["question"]), RunnableLambda(lambda _: INAPPROPRIATE_MESSAGE)),
+  
         base_chain,
     )
 
@@ -105,9 +111,9 @@ def make_chat_chain(
     def get_history(session_id: str) -> ChatMessageHistory:
         if session_id not in session_store:
             history = ChatMessageHistory()
-            if seed_messages:
-                for m in seed_messages:
-                    history.add_message(m)
+            msgs = seed_messages if seed_messages is not None else SEED_MESSAGES
+            for m in msgs:
+                history.add_message(m)
             session_store[session_id] = history
         return session_store[session_id]
 
@@ -117,4 +123,5 @@ def make_chat_chain(
         input_messages_key="question",
         history_messages_key="history",
     )
+
     return chat_chain, retriever
