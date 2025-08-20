@@ -2,7 +2,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from assistant.chains_chat import make_chat_chain
+from assistant.chain import make_chat_chain
 
 # Build the chain once at startup
 chat_chain, _ = make_chat_chain(pdf_path=Path("assistant/AboutME.pdf"), k=2, seed_messages=None)
@@ -39,3 +39,13 @@ def chat(body: ChatBody):
     cfg = {"configurable": {"session_id": body.session_id}}
     answer = chat_chain.invoke({"question": body.question}, cfg)
     return {"answer": answer}
+
+
+
+
+
+
+    """curl -s -X POST "http://127.0.0.1:8000/chat" \
+  -H "Content-Type: application/json" \
+  -d '{"question":"What is Mohamed Amr\u2019s background?","session_id":"local-123"}'
+"""
