@@ -1,7 +1,6 @@
 from pathlib import Path
 from langchain_core.messages import HumanMessage, AIMessage
-
-from assistant.chains_chat import make_chat_chain
+from assistant.chain import make_chat_chain
 
 
 seed = [
