@@ -3,3 +3,7 @@ uvicorn
 sse_starlette
 pypdf
 python-dotenv
+requests
+pinecone-client
+langchain
+langchain-groq
